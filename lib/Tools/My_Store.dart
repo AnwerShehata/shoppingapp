@@ -17,10 +17,10 @@ class My_Store {
 List<My_Store> StoreItems =[
 
   My_Store.items(
-      itemName: "Pink Can",
+      itemName: "Anwer shehata",
       itemPrice: 2500.00,
       itemImage: "https://cdn.pixabay.com/photo/2014/05/03/00/50/flower-child-336658__480.jpg",
-      itemRating: 0.0),
+      itemRating: 5.0),
 
   My_Store.items(
       itemName: "Black Strip  White ",
