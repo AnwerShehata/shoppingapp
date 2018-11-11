@@ -11,7 +11,8 @@ class _BirdState extends State<My_Messages> {
       debugShowCheckedModeBanner: false,
       home:  new Scaffold(
 
-        appBar: new AppBar(title: new Text("Messages"),
+        //------------- AppBar---------------------------------------------------------------
+      appBar: new AppBar(title: new Text("Messages"),
           centerTitle: false,
           leading: new IconButton(icon: Icon(Icons.keyboard_arrow_left,size: 35.0,),
               onPressed: (){Navigator.pop(context, true);}),

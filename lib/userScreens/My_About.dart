@@ -11,6 +11,8 @@ class _BirdState extends State<My_About> {
       debugShowCheckedModeBanner: false,
       home:  new Scaffold(
 
+
+        //------------- AppBar---------------------------------------------------------------
         appBar: new AppBar(
           centerTitle: false,
           title: new Text(" About App"),

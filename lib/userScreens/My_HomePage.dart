@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shoppingapp/Tools/My_Store.dart';
 import 'My_Favorite.dart';
 import 'My_Messages.dart';
 import 'My_Cart.dart';
-import 'My_Notifications.dart';
-import 'My_History.dart';
-import 'My_Profile.dart';
-import 'My_Delivery.dart';
-import 'My_About.dart';
-import 'My_Login.dart';
+import '../My_Drawer.dart';
 
 class My_HomePage extends StatefulWidget {
   _BirdState createState() => new _BirdState();
@@ -69,72 +65,101 @@ class _BirdState extends State<My_HomePage> {
 
 
 
-        //-----FloatingActionButton-----------------------------------------------
-        drawer: new Drawer(
-          child: new Column(
-            children: <Widget>[
-              new UserAccountsDrawerHeader(
-                  accountName: new Text("Anwer shehata"),
-                  accountEmail: new Text("anwershehata@gmail.com"),
-                currentAccountPicture: new CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: new Icon(Icons.account_circle ,size: 30.0,),
-                ),
-              ),
-              new ListTile(
-                title: new Text("order Notification"),
-                leading: new CircleAvatar(child: Icon(Icons.notifications),),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> My_Notifications()));
-                },
-              ),
-              new ListTile(
-                title: new Text("order History"),
-                leading: new CircleAvatar(child: Icon(Icons.history),),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> My_History()));
-
-                },
-              ),
-              new Divider(),
-              new ListTile(
-                title: new Text("Profile Settings "),
-                leading: new CircleAvatar(child: Icon(Icons.account_circle),),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> My_Profile()));
-                },
-              ),
-              new ListTile(
-                title: new Text("Delivery Address"),
-                leading: new CircleAvatar(child: Icon(Icons.home),),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> My_Delivery()));
-                },
-              ),
-              new Divider(),
-              new ListTile(
-                title: new Text("About US"),
-                trailing: new CircleAvatar(child: Icon(Icons.help),),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> My_About()));
-                },
-              ),
-              new ListTile(
-                title: new Text("Login"),
-                trailing: new CircleAvatar(child: Icon(Icons.exit_to_app),),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> My_Login()));
-                },
-              ),
-            ],
-          ),
-        ),
+        //-----drawer-----------------------------------------------
+        drawer: My_Drawer(),
 
 
 
         //-----body-------------------------------------------------------------
         body: new Center(
-          child: new Text("My Home Page Stor"),
+          child: new Column(
+            children: <Widget>[
+              
+              new Flexible(
+                  child: new GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                    itemCount: StoreItems.length,
+                    itemBuilder: (BuildContext context ,int index){
+
+                    return new Card(
+                      child:  Stack(
+                        alignment: FractionalOffset.topLeft,
+                        children: <Widget>[
+
+                          new Stack(
+                            alignment: FractionalOffset.bottomCenter,
+                            children: <Widget>[
+
+                              //هنا كود الصورة
+                              new Container(
+                                decoration: new BoxDecoration(
+                                  image: DecorationImage(fit: BoxFit.cover,
+                                      image: NetworkImage(StoreItems[index].itemImage)
+                                  ),
+                                ),
+                              ),
+
+                              // هنا كود اسم المنتج والسعر
+                              new Container(
+                                height: 35.0,
+                                color: Colors.black.withAlpha(100),
+                                child: new  Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: new Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+
+                                      new Text("${StoreItems[index].itemName.substring(0,8)}..." ,
+                                        style: TextStyle(fontSize: 16.0 ,color: Colors.white),),
+
+                                      new Text("N${StoreItems[index].itemPrice}" ,
+                                        style: TextStyle(color: Colors.amber.shade500),),
+                                    ],
+                                  ),
+                                ),
+                              )
+
+                            ],
+                          ),
+
+                          //  هنا كود التقييم والمفضلة
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              new Container(
+                                height: 30.0,
+                                width: 50.0,
+                                decoration: new BoxDecoration(
+                                    color: Colors.black.withOpacity(0.5),
+                                    borderRadius: BorderRadius.only(
+                                      topRight: new Radius.circular(6.0),
+                                      bottomRight: new Radius.circular(6.0),
+                                    )
+                                ),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    new Icon(Icons.star , color: Colors.yellow, size: 18.0,),
+                                    new Text("${StoreItems[index].itemRating}" ,
+                                      style: TextStyle(color: Colors.white),)
+                                  ],
+                                ),
+                              ),
+                              new IconButton(icon: Icon(Icons.favorite_border,size: 25.0 , color: Colors.red,),
+                                  onPressed: (){}),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+
+                    },
+              )
+              )
+              
+            ],
+          ),
         ),
 
 

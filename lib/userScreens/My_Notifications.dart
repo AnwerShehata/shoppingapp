@@ -11,7 +11,8 @@ class _BirdState extends State<My_Notifications> {
       debugShowCheckedModeBanner: false,
       home:  new Scaffold(
 
-        appBar: new AppBar(
+        //------------- AppBar---------------------------------------------------------------
+      appBar: new AppBar(
           centerTitle: false,
           title: new Text("Notifications"),
           leading: IconButton(icon: Icon(Icons.keyboard_arrow_left,size: 35.0,color: Colors.white,),
