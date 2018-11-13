@@ -23,6 +23,7 @@ dependencies:
   firebase_storage:
   cloud_firestore:
   firebase_database:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

@@ -9,11 +9,13 @@ class My_ItemDetails extends StatefulWidget {
   final double itemPrice;
   final double itemRating;
   final String itemsuName;
+  final String itemDescription;
 
   const My_ItemDetails({Key key,
     this.itemName,
     this.itemImage,
     this.itemPrice,
+    this.itemDescription,
     this.itemRating,
     this.itemsuName
   }) : super(key: key);
@@ -182,14 +184,13 @@ class _BirdState extends State<My_ItemDetails> {
                       margin: new EdgeInsets.only(left: 20.0, right: 20.0),
                       child: new Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        textDirection: TextDirection.ltr,
                         children: <Widget>[
                           new SizedBox(
                             height: 10.0,
                           ),
-                          new Text(
-                            "Description",
-                            style: new TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.w700),
+                          new Text(widget.itemDescription, style: new TextStyle(
+                                fontSize: 12.0, fontWeight: FontWeight.w700),
                           ),
                           new SizedBox(
                             height: 10.0,

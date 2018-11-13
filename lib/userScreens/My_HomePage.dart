@@ -90,8 +90,8 @@ class _BirdState extends State<My_HomePage> {
                             itemName: StoreItems[index].itemName,
                             itemPrice: StoreItems[index].itemPrice,
                             itemRating: StoreItems[index].itemRating,
+                            itemDescription: StoreItems[index].itemDescription,
                           ))); },
-
                       child: new Card(
                         child:  Stack(
                           alignment: FractionalOffset.topLeft,
@@ -169,7 +169,6 @@ class _BirdState extends State<My_HomePage> {
                     },
               )
               )
-              
             ],
           ),
         ),
