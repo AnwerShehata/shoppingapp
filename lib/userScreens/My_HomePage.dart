@@ -5,6 +5,7 @@ import 'My_Cart.dart';
 import '../My_Drawer.dart';
 import 'My_ItemDetails.dart';
 import '../Tools/My_Store.dart';
+import '../adminScreens/My_adminHome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class My_HomePage extends StatefulWidget {
@@ -18,6 +19,7 @@ class _BirdState extends State<My_HomePage> {
   Widget build(BuildContext context) {
     this.context = context;
     return new MaterialApp(
+      theme: new ThemeData(fontFamily: "Cairo"),
       debugShowCheckedModeBanner: false,
       home: new Scaffold(
 
@@ -25,7 +27,8 @@ class _BirdState extends State<My_HomePage> {
         appBar: AppBar(
           centerTitle: true,
           elevation: 0.0,
-          title: Text("GirLies"),
+          title: GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => My_adminHome()),);},
+              child: Text("GirLies")),
           actions: <Widget>[
             new IconButton(icon: new Icon(Icons.favorite),
                 onPressed: () {

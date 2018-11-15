@@ -28,11 +28,13 @@ class _BirdState extends State<My_ItemDetails> {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return new MaterialApp(
+      theme: new ThemeData(fontFamily: "Cairo"),
       debugShowCheckedModeBanner: false,
       home:  new Scaffold(
 
         //------------- AppBar--------------------------------------------------
         appBar: new AppBar(
+          elevation: 0.0,
             centerTitle: false,
             title: new Text(widget.itemName),
             leading: IconButton(icon: Icon(Icons.keyboard_arrow_left,size: 35.0,color: Colors.white,),
@@ -74,8 +76,8 @@ class _BirdState extends State<My_ItemDetails> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                new InkWell(onTap: (){}, child: new Text("Add To Favorites" ,style: TextStyle(fontWeight: FontWeight.w600 ,color: Colors.white),),),
-                new InkWell(onTap: (){},child: new Text("Order New" , style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),),),
+                new InkWell(onTap: (){}, child: new Text("Add To Favorites" ,style: TextStyle(color: Colors.white),),),
+                new InkWell(onTap: (){},child: new Text("Order New" , style: TextStyle(color: Colors.white),),),
               ],
             ),
           ),
@@ -88,7 +90,7 @@ class _BirdState extends State<My_ItemDetails> {
           children: <Widget>[
 
             new Container(
-              height: 300.0,
+              height: 270.0,
               decoration: new BoxDecoration(
                 color: Colors.yellow,
                 image: new DecorationImage(
@@ -96,8 +98,8 @@ class _BirdState extends State<My_ItemDetails> {
                     image: NetworkImage(widget.itemImage)
                 ),
                 borderRadius: new BorderRadius.only(
-                  bottomRight: Radius.circular(80.0),
-                  bottomLeft:Radius.circular(80.0),
+                  bottomRight: Radius.circular(30.0),
+                  bottomLeft:Radius.circular(30.0),
                 )
               ),
             ),
@@ -106,7 +108,7 @@ class _BirdState extends State<My_ItemDetails> {
               physics: BouncingScrollPhysics(),
               child: new Column(
                 children: <Widget>[
-                  new SizedBox(height: 300.0,),
+                  new SizedBox(height: 270.0,),
                   // هنا الاسم والسعر والتقيم
                   new Card(
                     child: new Container(
