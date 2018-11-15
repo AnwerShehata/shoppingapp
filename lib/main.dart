@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import './Authentication/Ui_Page/Login.dart';
 
 void main() => runApp(new MyApp());
 
@@ -16,12 +17,7 @@ class _BirdState extends State<MyApp> {
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  new My_HomePage(
-
-
-
-
-      ),
+      home:  new My_HomePage(),
     );
   }
 }

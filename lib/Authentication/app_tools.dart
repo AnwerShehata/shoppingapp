@@ -6,7 +6,7 @@ import '../userScreens/My_HomePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-//===TextField========================
+//===TextField=============================================
 Widget appTextField({
   IconData texticon ,
   String textHint,
@@ -17,7 +17,7 @@ Widget appTextField({
 {
   sidepadding ==null? sidepadding= 0.0:  sidepadding;
   textHint == null ? textHint ="": textHint;
-  textInputType == null ? textInputType== TextInputType.text : textInputType;
+  textInputType == null ? textInputType = TextInputType.text : textInputType;
 
   return Padding(
     padding: new EdgeInsets.only(left:  sidepadding  , right:  sidepadding),
@@ -43,8 +43,8 @@ Widget appTextField({
 }
 
 
-//===Button========================
-//===Button========================
+
+//===Button=============================================
 Widget appButton(
     {String btnTxt,
       double btnPadding,
@@ -76,7 +76,8 @@ Widget appButton(
 }
 
 
-//===showSnackBar========================
+
+//===showSnackBar=========================================
 showSnackBar(String message, final scaffoldKey ) {
   scaffoldKey.currentState.showSnackBar(new SnackBar(
     content: new Text(message, style: new TextStyle(color: Colors.white ,fontSize: 17.0),),
@@ -88,7 +89,7 @@ showSnackBar(String message, final scaffoldKey ) {
 
 
 
-//===displayProgressDialog========================
+//===displayProgressDialog======================================
 // في حالة استعداء هذا الدالة سوف يتم تشغل عرض صفحة Progress
 displayProgressDialog(BuildContext context) {
   Navigator.of(context).push(new PageRouteBuilder(
@@ -98,11 +99,53 @@ displayProgressDialog(BuildContext context) {
       }));
 }
 
-//===closeProgressDialog========================
+//===closeProgressDialog======================================
 // في حالة استعداء هذا الدالة سوف يتم اغلاق  صفحة Progress
 closeProgressDialog(BuildContext context) {
   Navigator.of(context).pop();
 }
+
+
+//===writeDataLocally===========================================
+writeDataLocally({String key, String value}) async {
+  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
+  final SharedPreferences localData = await saveLocal;
+  localData.setString(key, value);
+}
+
+//===writeBoolDataLocally=========================================
+writeBoolDataLocally({String key, bool value}) async {
+  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
+  final SharedPreferences localData = await saveLocal;
+  localData.setBool(key, value);
+}
+
+//===getDataLocally=============================================
+//== هذا الدوال  تقوم بجلب بيانات المستخدم  مثل (الاسم .. الايميل .. الصورة ....)من قاعدة بيانات الفايربس
+getDataLocally({String key}) async {
+  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
+  final SharedPreferences localData = await saveLocal;
+  return localData.get(key);}
+
+getStringDataLocally({String key}) async {
+  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
+  final SharedPreferences localData = await saveLocal;
+  return localData.getString(key);}
+
+getBoolDataLocally({String key}) async {
+  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
+  final SharedPreferences localData = await saveLocal;
+  return localData.getBool(key) == null ? false : localData.getBool(key);}
+
+clearDataLocally() async {
+  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
+  final SharedPreferences localData = await saveLocal;
+  localData.clear();}
+
+
+
+
+
 
 
 Widget productTextField(
@@ -394,38 +437,5 @@ List<DropdownMenuItem<String>> buildAndGetDropDownItems(List size) {
 
 
 
-writeDataLocally({String key, String value}) async {
-  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
-  final SharedPreferences localData = await saveLocal;
-  localData.setString(key, value);
-}
 
-writeBoolDataLocally({String key, bool value}) async {
-  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
-  final SharedPreferences localData = await saveLocal;
-  localData.setBool(key, value);
-}
 
-getDataLocally({String key}) async {
-  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
-  final SharedPreferences localData = await saveLocal;
-  return localData.get(key);
-}
-
-getStringDataLocally({String key}) async {
-  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
-  final SharedPreferences localData = await saveLocal;
-  return localData.getString(key);
-}
-
-getBoolDataLocally({String key}) async {
-  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
-  final SharedPreferences localData = await saveLocal;
-  return localData.getBool(key) == null ? false : localData.getBool(key);
-}
-
-clearDataLocally() async {
-  Future<SharedPreferences> saveLocal = SharedPreferences.getInstance();
-  final SharedPreferences localData = await saveLocal;
-  localData.clear();
-}

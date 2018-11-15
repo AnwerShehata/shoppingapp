@@ -14,7 +14,6 @@ class FirebaseMethods implements AppMethods {
   @override
   Future<String> createUserAccount(
       {String fullname, String phone, String email, String password}) async {
-    // TODO: implement createUserAccount
     FirebaseUser user;
 
     try {
@@ -95,10 +94,8 @@ class FirebaseMethods implements AppMethods {
 
   @override
   Future<bool> logOutUser() async {
-    // TODO: implement logOutUser
     await auth.signOut();
     await clearDataLocally();
-
     return complete();
   }
 
